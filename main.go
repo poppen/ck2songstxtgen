@@ -9,6 +9,13 @@ import (
 	"github.com/dhowden/tag"
 )
 
+type song struct {
+	name     string
+	songName string
+	factor   uint16
+	volume   float32
+}
+
 func title(oggFileName string) string {
 	f, err := os.Open(oggFileName)
 	if err != nil {

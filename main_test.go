@@ -4,41 +4,50 @@ import (
 	"testing"
 )
 
-type musicInfo struct {
-	file  string
-	title string
-}
-
 var oggtests = []struct {
-	in  musicInfo
-	out musicInfo
+	in  song
+	out song
 }{
 	{
-		musicInfo{
+		song{
 			"internal/ogg_test/example.ogg",
 			"",
+			1,
+			0.48,
 		},
-		musicInfo{
+		song{
 			"",
 			"OGG Test File",
+			1,
+			0.48,
 		},
 	},
 	{
-		musicInfo{
+		song{
 			"internal/ogg_test/example_without_title.ogg",
 			"",
+			1,
+			0.48,
 		},
-		musicInfo{
+		song{
 			"",
 			"example_without_title",
+			1,
+			0.48,
 		},
 	},
 }
 
 func TestTitle(t *testing.T) {
 	for _, tt := range oggtests {
-		if s := title(tt.in.file); s != tt.out.title {
-			t.Errorf("title(%q) => %q, want: %q", tt.in.file, s, tt.out.title)
+		if s := title(tt.in.name); s != tt.out.songName {
+			t.Errorf("songName(%q) => %q, want: %q", tt.in.name, s, tt.out.songName)
 		}
 	}
+}
+
+func TestEntry(t *testing.T) {
+}
+
+func TestPrintEntry(t *testing.T) {
 }
